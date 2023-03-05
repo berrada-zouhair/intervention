@@ -1,0 +1,28 @@
+version: "3"
+services:
+  server:
+    image: amvt-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/amvtdb?useSSL=false
+    networks:
+      - amvt-net
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    platform: linux/amd64
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    networks:
+      - amvt-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=amvtdb
+      - MYSQL_USER=sa
+      - MYSQL_PASSWORD=1234
+
+networks:
+  amvt-net:
