@@ -25,4 +25,10 @@ public class InterventionController {
     public void create(@RequestBody Intervention intervention) {
         this.interventionService.add(intervention);
     }
+
+    @DeleteMapping("{interventionId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void create(@PathVariable Long interventionId) {
+        this.interventionService.remove(interventionId);
+    }
 }

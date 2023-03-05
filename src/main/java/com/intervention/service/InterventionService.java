@@ -20,4 +20,8 @@ public class InterventionService {
     public void add(Intervention intervention) {
         this.interventionRepository.save(intervention);
     }
+
+    public void remove(Long interventionId) {
+        this.interventionRepository.deleteById(interventionId);
+    }
 }
